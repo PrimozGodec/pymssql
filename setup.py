@@ -28,6 +28,7 @@ import platform
 import struct
 import sys
 
+from Cython.Build import cythonize
 from setuptools import setup, Extension
 from setuptools.command.test import test as TestCommand
 
@@ -265,7 +266,7 @@ def ext_modules():
     ]
     for e in ext_modules:
         e.cython_directives = {'language_level': sys.version_info[0]}
-    return ext_modules
+    return cythonize(ext_modules)
 
 
 def mk_long_description(numrev=1):
